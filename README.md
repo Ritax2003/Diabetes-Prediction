@@ -18,4 +18,5 @@ Used a <b>support vector machine(SVM)</b> model with accuracy of <b>~78%</b>. Wi
 <br>
 <br>
 <b>Hopefully you don't get diabetes like this poor fellow:</b>
-<image src="https://github.com/Ritax2003/Diabetes-Prediction/blob/61d00aac5e254f9ae17b40958592bed0f6745b76/Pics/4.png">
+<br>
+<image src="https://github.com/Ritax2003/Diabetes-Prediction/blob/15b41ef20603a23a71c9d62d03c2cb4969f0064a/Pics/4.png">
