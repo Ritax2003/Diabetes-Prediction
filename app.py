@@ -4,7 +4,7 @@ from streamlit_option_menu import option_menu
 import joblib
 
 # Load the SVM model
-model = joblib.load('\models\diabetes_model.joblib')
+model = joblib.load('models\diabetes_model.joblib')
 
 # Function to predict diabetes
 def predict_diabetes(input_features):
