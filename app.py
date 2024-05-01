@@ -19,7 +19,7 @@ if __name__ == '__main__':
                           
                           ['Predict Diabetes',
                            'Our Prediction Records',
-                           'About Us'],
+                           'About Me'],
                           icons=['heart','book','info'],
                           default_index=0)
         
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         st.markdown("____")
         st.write("All the records are stored only for academic and research purpose & will not be used for any other means.")
         
-    if selected == "About Us":
+    if selected == "About Me":
         st.markdown("<h2 style='text-align: center;'>ABOUT</h2>", unsafe_allow_html=True)
         st.markdown("____")
         st.markdown("<p style='text-align: center;'>This is an academic project made by B.Tech Computer Science And Engineering 3rd year student.</p>", unsafe_allow_html=True)
