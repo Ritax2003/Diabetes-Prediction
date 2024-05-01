@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Load the SVM model
-model = joblib.load('models\diabetes_model.joblib')
+model = joblib.load('Diabete-Prediction\models\diabetes_model.joblib')
 
 # Function to predict diabetes
 def predict_diabetes(input_features):
