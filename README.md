@@ -1,4 +1,4 @@
-### Diabetes Perediction Model:
+### Diabetes Perediction Model: https://group-3-diabetes-prediction-system.streamlit.app/
 Used a <b>support vector machine(SVM)</b> model with accuracy of <b>~78%</b>. Will try to increase accuracy in future.
 <br>
 <b>Used dataset</b> : PIMA Indian Dataset
