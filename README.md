@@ -8,7 +8,7 @@ Used a <b>support vector machine(SVM)</b> model with accuracy of <b>~78%</b>. Wi
 <image src="https://github.com/Ritax2003/Diabetes-Prediction/blob/61d00aac5e254f9ae17b40958592bed0f6745b76/Pics/1.png">
 <br>
 <br>
-<b>insert datas here</b>
+<b>insert data here</b>
 <image src="https://github.com/Ritax2003/Diabetes-Prediction/blob/61d00aac5e254f9ae17b40958592bed0f6745b76/Pics/2.png">
 <br>
 <br>
