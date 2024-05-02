@@ -80,12 +80,8 @@ if __name__ == '__main__':
         if st.button('Predict'):
             st.write('Input Features:', input_data)
            # prediction = predict_diabetes(input_features)
-            prediction = model.predict(input_data_reshaped)
+            prediction = model.predict(input_data)
             st.write('Raw Prediction:', prediction)
-            std_data = scalar.transform(input_data_reshaped)
-            print(std_data)
-            prediction = classifier.predict(std_data)
-            st.write(prediction)
             f = open("user_records.txt", "a")
             f.write("\n")
             new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
