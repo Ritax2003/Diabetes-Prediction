@@ -90,14 +90,14 @@ if __name__ == '__main__':
                 c.drawString(100, height-50, "Diabetes Prediction Report")
                 c.drawString(100, height-70, "--------------------------------------------")
                 c.drawString(100, height-90, f"Name: <b>{Name}</b>")
-                c.drawString(100, height-110, f"No. Of pregnancies: <b>{Pregnancies}</b>")
-                c.drawString(100, height-130, f"Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (GTIT): <b>{Glucose}</b>")
-                c.drawString(100, height-150, f"Diastolic Blood Pressure (mm Hg): <b>{BloodPressure}</b>")
-                c.drawString(100, height-170, f"Triceps skin fold Thickness (mm): <b>{SkinThickness}</b>")
-                c.drawString(100, height-190, f"2-Hour Serum insulin (µh/ml): <b>{Insulin}</b>")
-                c.drawString(100, height-210, f"BMI: <b>{BMI}</b>")
-                c.drawString(100, height-230, f"Diabetes pedigree function: <b>{DiabetesPedigreeFunction}</b>")
-                c.drawString(100, height-250, f"Age (years): <b>{Age}</b>")
+                c.drawString(100, height-110, f"No. Of pregnancies: {Pregnancies}")
+                c.drawString(100, height-130, f"Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (GTIT): {Glucose}")
+                c.drawString(100, height-150, f"Diastolic Blood Pressure (mm Hg): {BloodPressure}")
+                c.drawString(100, height-170, f"Triceps skin fold Thickness (mm): {SkinThickness}")
+                c.drawString(100, height-190, f"2-Hour Serum insulin (µh/ml): {Insulin}")
+                c.drawString(100, height-210, f"BMI: {BMI}")
+                c.drawString(100, height-230, f"Diabetes pedigree function: {DiabetesPedigreeFunction}")
+                c.drawString(100, height-250, f"Age (years): {Age}")
                 c.drawString(100, height-280, "--------------------------------------------")
                 c.drawString(100, height-300, "Prediction:")
                 if prediction == 1:
@@ -106,11 +106,11 @@ if __name__ == '__main__':
                 else:
                    c.setFillColorRGB(0, 1, 0)  # Green color
                    prediction_text = "No"
-                c.drawString(100, height-320, f"<b>{prediction_text}</b>")
+                c.drawString(100, height-320, f"{prediction_text}")
                 c.setFillColor(colors.black)
                 c.setFont("Helvetica", 10)
                 footnote = "Note: The prediction is based on probability. Actual results may vary. Please consult a doctor for a detailed check."
-                c.drawString(100, 50, footnote)
+                c.drawString(100, 200, footnote)
                 c.showPage()
                 c.save()
                 pdf_bytes = buffer.getvalue()
