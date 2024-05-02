@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from reportlab.pdfgen import canvas
-
+import os
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
 diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
@@ -89,17 +89,24 @@ if __name__ == '__main__':
                 st.write('__You may not have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
                 
-            def generate_report():
-                c = canvas.Canvas("diabetes_report.pdf")
+            def generate_report(Name, prediction, test_data_accuracy):
+                file_name = f"diabetes_report_{Name}.pdf"
+                c = canvas.Canvas(file_name)
                 c.drawString(100, 750, "Diabetes Prediction Report")
-                c.drawString(100, 730, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
-                c.drawString(100, 710, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+                c.drawString(100, 730, f"Name: {Name}")
+                c.drawString(100, 710, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
+                c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
                 c.save()
-            if st.button('Download Report'):
-                data=generate_report,
-                file_name="diabetes_report.pdf",
-                mime="application/pdf"
-            
+                return file_name
+                
+            file_path = generate_report(user_name, prediction, test_data_accuracy)
+
+            # Download button
+            if os.path.exists(file_path):
+                st.write(f"Download your report: [Download]({file_path})")
+            else:
+                st.write("Failed to generate report. Please try again.")
+           
 
     if selected == "Our Prediction Records":
         st.markdown("<h3 style='text-align: center;'>PREDICTION RECORDS OF OUR PREVIOUS USERS</h1>", unsafe_allow_html=True)
