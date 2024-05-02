@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
             
             pdf_base64 = base64.b64encode(pdf_bytes).decode('utf-8')
-            pdf_display = f'<a href="data:application/pdf;base64,{pdf_base64}" download="diabetes_report.pdf">Download Report</a>'
+            pdf_display = f'<a href="data:application/pdf;base64,{pdf_base64}" download="diabetes_report_{Name}.pdf">Download Report</a>'
             st.markdown(pdf_display, unsafe_allow_html=True)
            
 
