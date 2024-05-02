@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from reportlab.pdfgen import canvas
-import os
+from io import BytesIO
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
 diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
@@ -89,23 +89,23 @@ if __name__ == '__main__':
                 st.write('__You may not have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
                 
-            def generate_report(Name, prediction, test_data_accuracy):
-                file_name = f"diabetes_report_{Name}.pdf"
-                c = canvas.Canvas(file_name)
+           def generate_report(Name, prediction, test_data_accuracy):
+                buffer = BytesIO()
+                c = canvas.Canvas(buffer)
                 c.drawString(100, 750, "Diabetes Prediction Report")
-                c.drawString(100, 730, f"Name: {Name}")
+                c.drawString(100, 730, f"Name: {user_name}")
                 c.drawString(100, 710, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
                 c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
                 c.save()
-                return file_name
-                
-            file_path = generate_report(Name, prediction, test_data_accuracy)
+                pdf_bytes = buffer.getvalue()
+                buffer.close()
+                return pdf_bytes
+               
+            pdf_bytes = generate_report(Name, prediction, test_data_accuracy)
 
             # Download button
-            if os.path.exists(file_path):
-                st.write(f"Download your report: [Download]({file_path})")
-            else:
-                st.write("Failed to generate report. Please try again.")
+            if st.button("Download Report"):
+                    st.download_button(label="Download Report", data=pdf_bytes, file_name="diabetes_report.pdf", mime="application/pdf")
            
 
     if selected == "Our Prediction Records":
