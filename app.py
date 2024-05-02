@@ -89,7 +89,7 @@ if __name__ == '__main__':
                 st.write('__You may not have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
                 
-           def generate_report(Name, prediction, test_data_accuracy):
+            def generate_report(Name, prediction, test_data_accuracy):
                 buffer = BytesIO()
                 c = canvas.Canvas(buffer)
                 c.drawString(100, 750, "Diabetes Prediction Report")
