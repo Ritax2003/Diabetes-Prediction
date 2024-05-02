@@ -91,7 +91,8 @@ if __name__ == '__main__':
     if selected == "Our Prediction Records":
         st.markdown("<h3 style='text-align: center;'>PREDICTION RECORDS OF OUR PREVIOUS USERS</h1>", unsafe_allow_html=True)
         f = pd.read_csv("user_records.txt")
-        st.table(f)
+        #st.table(f)
+        st.table(f.style.set_table_attributes('style="width:100%;"'))
         st.markdown("____")
         st.write("All the records are stored only for academic and research purpose & will not be used for any other means.")
         
