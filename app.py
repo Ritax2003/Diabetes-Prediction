@@ -96,6 +96,7 @@ if __name__ == '__main__':
                 c.drawString(100, 570, f"Age(years)  : {Age}")
                 c.drawString(100, 540, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
                # c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+                c.showPage()
                 c.save()
                 pdf_bytes = buffer.getvalue()
                 buffer.close()
