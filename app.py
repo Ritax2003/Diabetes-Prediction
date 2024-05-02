@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
-
+from reportlab.pdfgen import canvas
 
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
@@ -87,6 +87,19 @@ if __name__ == '__main__':
             else:
                 st.write('__You may not have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
+            def generate_report():
+                c = canvas.Canvas("diabetes_report.pdf")
+                c.drawString(100, 750, "Diabetes Prediction Report")
+                c.drawString(100, 730, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
+                c.drawString(100, 710, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+                c.save()
+
+            st.download_button(
+                label="Download Report",
+                data=generate_report,
+                file_name="diabetes_report.pdf",
+                mime="application/pdf"
+            )
 
     if selected == "Our Prediction Records":
         st.markdown("<h3 style='text-align: center;'>PREDICTION RECORDS OF OUR PREVIOUS USERS</h1>", unsafe_allow_html=True)
