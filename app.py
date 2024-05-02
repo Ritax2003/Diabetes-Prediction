@@ -85,14 +85,14 @@ if __name__ == '__main__':
             input_data_reshaped1 = input_data_as_numpy_array1.reshape(1,-1)
             #standardize the input data
             std_data1 = scalar.transform(input_data_reshaped1)
-            print(std_data1)
+            st.write(std_data1)
             prediction1 = classifier.predict(std_data1)
-            print(prediction1)
+            st.write(prediction1)
             #print(prediction)
             if(prediction1 == 0):
-                print("Not Diabetic")
+                st.write("Not Diabetic")
             else:
-                print("Diabetic")
+                st.write("Diabetic")
             st.write('Input Features:', input_data)
             # prediction = predict_diabetes(input_features)
             prediction = model.predict(input_data)
