@@ -78,6 +78,21 @@ if __name__ == '__main__':
         
         # Predict
         if st.button('Predict'):
+         input_data1 = (5,166,72,19,175,25.8,0.587,51)
+         #changing the input_data to numpy array
+         input_data_as_numpy_array1 = np.asarray(input_data1)
+         #reshape the array data
+         input_data_reshaped1 = input_data_as_numpy_array1.reshape(1,-1)
+         #standardize the input data
+         std_data1 = scalar.transform(input_data_reshaped1)
+         print(std_data1)
+         prediction1 = classifier.predict(std_data1)
+         print(prediction1)
+         #print(prediction)
+         if(prediction1 == 0):
+           print("Not Diabetic")
+         else:
+           print("Diabetic")
             st.write('Input Features:', input_data)
            # prediction = predict_diabetes(input_features)
             prediction = model.predict(input_data)
