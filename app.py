@@ -8,6 +8,7 @@ from sklearn import svm
 from sklearn.metrics import accuracy_score
 from reportlab.pdfgen import canvas
 from io import BytesIO
+import base64
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
 diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
@@ -104,8 +105,11 @@ if __name__ == '__main__':
             pdf_bytes = generate_report(Name, prediction, test_data_accuracy)
 
             # Download button
-            if st.button("Download Report"):
-                    st.download_button(label="Download Report", data=pdf_bytes, file_name="diabetes_report.pdf", mime="application/pdf")
+            #if st.button("Download Report"):
+                   # st.download_button(label="Download Report", data=pdf_bytes, file_name="diabetes_report.pdf", mime="application/pdf")
+            pdf_base64 = base64.b64encode(pdf_bytes).decode('utf-8')
+            pdf_display = f'<a href="data:application/pdf;base64,{pdf_base64}" download="diabetes_report.pdf">Download Report</a>'
+            st.markdown(pdf_display, unsafe_allow_html=True)
            
 
     if selected == "Our Prediction Records":
