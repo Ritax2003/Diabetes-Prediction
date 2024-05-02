@@ -100,7 +100,7 @@ if __name__ == '__main__':
                 data=generate_report,
                 file_name="diabetes_report.pdf",
                 mime="application/pdf"
-            )
+            
 
     if selected == "Our Prediction Records":
         st.markdown("<h3 style='text-align: center;'>PREDICTION RECORDS OF OUR PREVIOUS USERS</h1>", unsafe_allow_html=True)
