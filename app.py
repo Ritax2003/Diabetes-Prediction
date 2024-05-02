@@ -82,6 +82,8 @@ if __name__ == '__main__':
            # prediction = predict_diabetes(input_features)
             prediction = model.predict(input_data)
             st.write('Raw Prediction:', prediction[0])
+            std_data = scalar.transform(input_data_reshaped)
+            st.write(std_data)
             f = open("user_records.txt", "a")
             f.write("\n")
             new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
