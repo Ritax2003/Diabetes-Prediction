@@ -12,7 +12,7 @@ from io import BytesIO
 import base64
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
-diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
+"""diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
 X = diabetes_dataset.drop(columns='Outcome',axis = 1)
 Y = diabetes_dataset['Outcome']
 #data standardization
@@ -26,7 +26,7 @@ classifier = svm.SVC(kernel='linear')
 classifier.fit(X_train, Y_train)
 X_test_prediction = classifier.predict(X_test)
 test_data_accuracy = accuracy_score(X_test_prediction,Y_test)
-test_data_accuracy = test_data_accuracy*100
+test_data_accuracy = test_data_accuracy*100 """
 # Function to predict diabetes
 #def predict_diabetes(input_features):
  #   prediction = model.predict([input_features])
@@ -108,24 +108,24 @@ if __name__ == '__main__':
             
             if prediction[0] == 1:
                 st.write('__You may have diabetes.__')
-                st.write('Accuracy:',round(test_data_accuracy,3),'%')
+                #st.write('Accuracy:',round(test_data_accuracy,3),'%')
             else:
                 st.write('__You may not have diabetes.__')
-                st.write('Accuracy:',round(test_data_accuracy,3),'%')
+                #st.write('Accuracy:',round(test_data_accuracy,3),'%')
                 
-            def generate_report(Name, prediction, test_data_accuracy):
+            def generate_report(Name, prediction):
                 buffer = BytesIO()
                 c = canvas.Canvas(buffer)
                 c.drawString(100, 750, "Diabetes Prediction Report")
                 c.drawString(100, 730, f"Name: {Name}")
                 c.drawString(100, 710, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
-                c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+               # c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
                 c.save()
                 pdf_bytes = buffer.getvalue()
                 buffer.close()
                 return pdf_bytes
                
-            pdf_bytes = generate_report(Name, prediction, test_data_accuracy)
+            pdf_bytes = generate_report(Name, prediction)
 
             
             pdf_base64 = base64.b64encode(pdf_bytes).decode('utf-8')
