@@ -84,7 +84,7 @@ if __name__ == '__main__':
             st.write('Raw Prediction:', prediction[0])
             f = open("user_records.txt", "a")
             f.write("\n")
-            new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
+            new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction[0]])
             leng = len(new_data)
             f.write(new_data[1:leng-1]) 
             f.close()
