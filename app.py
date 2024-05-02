@@ -93,7 +93,7 @@ if __name__ == '__main__':
                 buffer = BytesIO()
                 c = canvas.Canvas(buffer)
                 c.drawString(100, 750, "Diabetes Prediction Report")
-                c.drawString(100, 730, f"Name: {user_name}")
+                c.drawString(100, 730, f"Name: {Name}")
                 c.drawString(100, 710, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
                 c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
                 c.save()
