@@ -8,6 +8,8 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
 from io import BytesIO
 import base64
 # Load the SVM model
@@ -83,19 +85,32 @@ if __name__ == '__main__':
                 
             def generate_report(Name, prediction):
                 buffer = BytesIO()
-                c = canvas.Canvas(buffer)
-                c.drawString(100, 750, "Diabetes Prediction Report")
-                c.drawString(100, 730, f"Name: {Name}")
-                c.drawString(100, 710, f"No. Of pregnancies: {Pregnancies}")
-                c.drawString(100, 690, f"Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (GTIT): {Glucose}")
-                c.drawString(100, 670, f"DiaStolic Blood Pressure (mm Hg) : {BloodPressure}")
-                c.drawString(100, 650, f"Triceps skin fold Thickness (mm) : {SkinThickness}")
-                c.drawString(100, 630, f"2-Hour Serum insulin (µh/ml)  : {Insulin}")
-                c.drawString(100, 610, f"BMI: {BMI}")
-                c.drawString(100, 590, f"Diabetes pedigree function : {DiabetesPedigreeFunction}")
-                c.drawString(100, 570, f"Age(years)  : {Age}")
-                c.drawString(100, 540, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
-               # c.drawString(100, 690, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+                c = canvas.Canvas(buffer, pagesize=letter)
+                width, height = letter
+                c.drawString(100, height-50, "Diabetes Prediction Report")
+                c.drawString(100, height-70, "--------------------------------------------")
+                c.drawString(100, height-90, f"Name: <b>{Name}</b>")
+                c.drawString(100, height-110, f"No. Of pregnancies: <b>{Pregnancies}</b>")
+                c.drawString(100, height-130, f"Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (GTIT): <b>{Glucose}</b>")
+                c.drawString(100, height-150, f"Diastolic Blood Pressure (mm Hg): <b>{BloodPressure}</b>")
+                c.drawString(100, height-170, f"Triceps skin fold Thickness (mm): <b>{SkinThickness}</b>")
+                c.drawString(100, height-190, f"2-Hour Serum insulin (µh/ml): <b>{Insulin}</b>")
+                c.drawString(100, height-210, f"BMI: <b>{BMI}</b>")
+                c.drawString(100, height-230, f"Diabetes pedigree function: <b>{DiabetesPedigreeFunction}</b>")
+                c.drawString(100, height-250, f"Age (years): <b>{Age}</b>")
+                c.drawString(100, height-280, "--------------------------------------------")
+                c.drawString(100, height-300, "Prediction:")
+                if prediction == 1:
+                   c.setFillColorRGB(1, 0, 0)  # Red color
+                   prediction_text = "Yes"
+                else:
+                   c.setFillColorRGB(0, 1, 0)  # Green color
+                   prediction_text = "No"
+                c.drawString(100, height-320, f"<b>{prediction_text}</b>")
+                c.setFillColor(colors.black)
+                c.setFont("Helvetica", 10)
+                footnote = "Note: The prediction is based on probability. Actual results may vary. Please consult a doctor for a detailed check."
+                c.drawString(100, 50, footnote)
                 c.showPage()
                 c.save()
                 pdf_bytes = buffer.getvalue()
