@@ -27,9 +27,9 @@ X_test_prediction = classifier.predict(X_test)
 test_data_accuracy = accuracy_score(X_test_prediction,Y_test)
 test_data_accuracy = test_data_accuracy*100
 # Function to predict diabetes
-def predict_diabetes(input_features):
-    prediction = model.predict([input_features])
-    return prediction[0]
+#def predict_diabetes(input_features):
+ #   prediction = model.predict([input_features])
+  #  return prediction[0]
 
 
 # Main function
@@ -71,12 +71,15 @@ if __name__ == '__main__':
         }
 
         # Convert input data to a list for prediction
-        input_features = [input_data[feature] for feature in input_data]
-
+        #input_features = [input_data[feature] for feature in input_data]
+        input_data = np.array([[Pregnancies, Glucose, BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age]])
+        input_data_reshaped = input_data.reshape(1,-1);
+        
         # Predict
         if st.button('Predict'):
-            st.write('Input Features:', input_features)
-            prediction = predict_diabetes(input_features)
+            st.write('Input Features:', input_data)
+           # prediction = predict_diabetes(input_features)
+            prediction = model.predict(input_data_reshaped)
             st.write('Raw Prediction:', prediction)
             f = open("user_records.txt", "a")
             f.write("\n")
@@ -85,7 +88,7 @@ if __name__ == '__main__':
             f.write(new_data[1:leng-1]) 
             f.close()
             
-            if prediction == 1:
+            if prediction[0] == 1:
                 st.write('__You may have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
             else:
