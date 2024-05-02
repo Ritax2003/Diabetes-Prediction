@@ -102,10 +102,10 @@ if __name__ == '__main__':
                 c.drawString(100, height-300, "Prediction:")
                 if prediction == 1:
                    c.setFillColorRGB(1, 0, 0)  # Red color
-                   prediction_text = "Yes"
+                   prediction_text = "Diabetes (possibly)"
                 else:
                    c.setFillColorRGB(0, 1, 0)  # Green color
-                   prediction_text = "No"
+                   prediction_text = "May not be Diabetes"
                 c.drawString(100, height-320, f"{prediction_text}")
                 c.setFillColor(colors.black)
                 c.setFont("Helvetica", 10)
