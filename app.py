@@ -29,12 +29,7 @@ test_data_accuracy = test_data_accuracy*100
 def predict_diabetes(input_features):
     prediction = model.predict([input_features])
     return prediction[0]
-def generate_report():
-                c = canvas.Canvas("diabetes_report.pdf")
-                c.drawString(100, 750, "Diabetes Prediction Report")
-                c.drawString(100, 730, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
-                c.drawString(100, 710, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
-                c.save()
+
 
 # Main function
 if __name__ == '__main__':
@@ -94,9 +89,13 @@ if __name__ == '__main__':
                 st.write('__You may not have diabetes.__')
                 st.write('Accuracy:',round(test_data_accuracy,3),'%')
                 
-            
+            def generate_report():
+                c = canvas.Canvas("diabetes_report.pdf")
+                c.drawString(100, 750, "Diabetes Prediction Report")
+                c.drawString(100, 730, "Prediction: {}".format("Yes" if prediction == 1 else "No"))
+                c.drawString(100, 710, "Accuracy: {}%".format(round(test_data_accuracy, 3)))
+                c.save()
             if st.button('Download Report'):
-                label="Download Report",
                 data=generate_report,
                 file_name="diabetes_report.pdf",
                 mime="application/pdf"
