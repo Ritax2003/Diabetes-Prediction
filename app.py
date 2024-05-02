@@ -12,21 +12,6 @@ from io import BytesIO
 import base64
 # Load the SVM model
 model = joblib.load("models/diabetes_model.joblib")
-"""diabetes_dataset = pd.read_csv('diabetes-pima-indian-dataset.csv')
-X = diabetes_dataset.drop(columns='Outcome',axis = 1)
-Y = diabetes_dataset['Outcome']
-#data standardization
-scalar = StandardScaler()
-scalar.fit(X)
-standardized_data = scalar.transform(X)
-X= standardized_data
-Y = diabetes_dataset['Outcome']
-X_train,X_test,Y_train,Y_test = train_test_split(X,Y, test_size = 0.3, stratify=Y, random_state=6)
-classifier = svm.SVC(kernel='linear')
-classifier.fit(X_train, Y_train)
-X_test_prediction = classifier.predict(X_test)
-test_data_accuracy = accuracy_score(X_test_prediction,Y_test)
-test_data_accuracy = test_data_accuracy*100 """
 # Function to predict diabetes
 #def predict_diabetes(input_features):
  #   prediction = model.predict([input_features])
