@@ -76,7 +76,7 @@ if __name__ == '__main__':
             prediction = predict_diabetes(input_features)
             f = open("user_records.txt", "a")
             f.write("\n")
-            new_data = str([name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
+            new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
             leng = len(new_data)
             f.write(new_data[1:leng-1]) 
             f.close()
