@@ -75,7 +75,9 @@ if __name__ == '__main__':
 
         # Predict
         if st.button('Predict'):
+            st.write('Input Features:', input_features)
             prediction = predict_diabetes(input_features)
+            st.write('Raw Prediction:', prediction)
             f = open("user_records.txt", "a")
             f.write("\n")
             new_data = str([Name,Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin,BMI, DiabetesPedigreeFunction,Age,prediction])
