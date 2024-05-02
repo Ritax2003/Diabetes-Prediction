@@ -89,10 +89,10 @@ if __name__ == '__main__':
             prediction1 = classifier.predict(std_data1)
             print(prediction1)
             #print(prediction)
-               if(prediction1 == 0):
-                  print("Not Diabetic")
-               else:
-                  print("Diabetic")
+            if(prediction1 == 0):
+                print("Not Diabetic")
+            else:
+                print("Diabetic")
             st.write('Input Features:', input_data)
             # prediction = predict_diabetes(input_features)
             prediction = model.predict(input_data)
