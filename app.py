@@ -99,7 +99,7 @@ if __name__ == '__main__':
                 c.save()
                 return file_name
                 
-            file_path = generate_report(user_name, prediction, test_data_accuracy)
+            file_path = generate_report(Name, prediction, test_data_accuracy)
 
             # Download button
             if os.path.exists(file_path):
