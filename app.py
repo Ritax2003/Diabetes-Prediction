@@ -89,7 +89,7 @@ if __name__ == '__main__':
                 width, height = letter
                 c.drawString(100, height-50, "Diabetes Prediction Report")
                 c.drawString(100, height-70, "--------------------------------------------")
-                c.drawString(100, height-90, f"Name: <b>{Name}</b>")
+                c.drawString(100, height-90, f"Name: {Name}")
                 c.drawString(100, height-110, f"No. Of pregnancies: {Pregnancies}")
                 c.drawString(100, height-130, f"Plasma glucose concentration at 2 Hours in an oral glucose tolerance test (GTIT): {Glucose}")
                 c.drawString(100, height-150, f"Diastolic Blood Pressure (mm Hg): {BloodPressure}")
